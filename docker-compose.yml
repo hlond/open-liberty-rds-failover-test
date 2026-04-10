@@ -1,0 +1,16 @@
+services:
+  wrapper-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wrapper-test
+    env_file: .env
+    networks:
+      - wrapper-test
+    ports:
+      - 9080:9080/tcp
+    restart: always
+
+networks:
+  wrapper-test:
+    name: wrapper-test

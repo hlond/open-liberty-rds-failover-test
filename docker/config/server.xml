@@ -1,0 +1,27 @@
+<server>
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>microProfile-7.1</feature>
+        <feature>persistence-3.1</feature>
+    </featureManager>
+
+    <basicRegistry />
+
+    <library id="aws-advanced-jdbc-wrapper">
+        <fileset dir="/config/aws-advanced-jdbc-wrapper" includes="*.jar"/>
+    </library>
+
+    <!-- DataSource mit AWS Wrapper -->
+    <dataSource id="default" jndiName="jdbc/default" type="javax.sql.DataSource">
+      <jdbcDriver libraryRef="aws-advanced-jdbc-wrapper" javax.sql.DataSource="software.amazon.jdbc.ds.AwsWrapperDataSource"/>
+      <properties
+        serverName="${env.DB_HOST}"
+        serverPort="5432"
+        user="${env.DB_USER}"
+        password="${env.DB_PASS}"
+        database="${env.DB_NAME}"
+        jdbcProtocol="jdbc:postgresql:"
+        targetDataSourceClassName="org.postgresql.ds.PGSimpleDataSource"
+        targetDataSourceProperties="${env.DB_PROPERTIES}" />
+    </dataSource>
+</server>
