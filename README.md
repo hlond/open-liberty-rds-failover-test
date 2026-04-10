@@ -25,7 +25,7 @@ echo "" >> .env
 echo "RDS_CLUSTER_IDENTIFIER=<rds-cluster-identifier>" >> .env
 echo "" >> .env
 echo "AWS_REGION=<region>" >> .env
-echo "# AWS authentication: aws configure export-credentials --format env" >> .env
+echo "# AWS authentication: aws configure export-credentials --format env-no-export" >> .env
 echo "AWS_ACCESS_KEY_ID=" >> .env
 echo "AWS_SECRET_ACCESS_KEY=" >> .env
 echo "AWS_SESSION_TOKEN=" >> .env
